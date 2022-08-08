@@ -43,4 +43,4 @@ steps:
 
 substitutions:
   _SERVICE_NAME: myservice
-  _REGION: us-central1thub
+  _REGION: us-central1
