@@ -36,6 +36,22 @@ steps:
         "--no-traffic",
       ]
 
+  - id: "split traffic"
+    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "gcloud"
+    args:
+      [
+        "run",
+        "services",
+        "update-traffic",
+        "${_SERVICE_NAME}",
+        "--to-latest",
+        "--platform",
+        "managed",
+        "--region",
+        "${_REGION}",
+      ]
+
   - id: "link revision on pull request"
     name: "gcr.io/${PROJECT_ID}/deployment-previews" # our custom builder
     secretEnv: ["GITHUB_TOKEN"]
